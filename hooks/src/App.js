@@ -1,8 +1,12 @@
-import React , { useState } from 'react'
+import React , { useState , useEffect } from 'react'
 
 export default function App(props){
     const [name , setName] = useState("azer")
     const [surName , setSurName] = useState("benelhedi")
+
+    useEffect(() => {
+        document.title = name + ' ' + surName 
+    })
 
     function handleNameChange(e){
         setName(e.target.value)
