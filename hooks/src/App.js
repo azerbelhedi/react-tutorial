@@ -8,6 +8,16 @@ export default function App(props){
         document.title = name + ' ' + surName 
     })
 
+    const [width , setWidth] = useState(window.innerWidth)
+    useEffect(() => {
+        const handleResize = () => {setWidth(window.innerWidth)}
+        window.addEventListener('resize' , handleResize)
+
+        return(
+            window.removeEventListener('resize' , handleResize)
+        )
+    })
+
     function handleNameChange(e){
         setName(e.target.value)
     }
@@ -31,6 +41,12 @@ export default function App(props){
                 value = {surName}
                 onChange = {handleSurNameChange}
             />
+
+            <hr/>
+
+            <h1>Width</h1>
+            {width}
+
         </div>
     )
 }
